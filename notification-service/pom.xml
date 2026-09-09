@@ -6,13 +6,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.flashsale</groupId>
+        <groupId>com.spring.luispa</groupId>
         <artifactId>flash-sale-platform</artifactId>
         <version>1.0.0</version>
     </parent>
 
     <artifactId>notification-service</artifactId>
-    <name>notification-service</name>
-    <description>Notification service</description>
+    <name>Notification Service</name>    <description>Notification service</description>
     <packaging>jar</packaging>
 </project>

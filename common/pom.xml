@@ -6,13 +6,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.flashsale</groupId>
+        <groupId>com.spring.luispa</groupId>
         <artifactId>flash-sale-platform</artifactId>
         <version>1.0.0</version>
     </parent>
 
     <artifactId>common</artifactId>
-    <name>common</name>
+    <name>Common</name>
     <description>Shared DTOs and utilities</description>
     <packaging>jar</packaging>
 </project>

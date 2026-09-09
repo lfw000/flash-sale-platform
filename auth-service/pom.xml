@@ -6,13 +6,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.flashsale</groupId>
+        <groupId>com.spring.luispa</groupId>
         <artifactId>flash-sale-platform</artifactId>
         <version>1.0.0</version>
     </parent>
 
     <artifactId>auth-service</artifactId>
-    <name>auth-service</name>
+    <name>Auth Service</name>
     <description>Authentication service</description>
     <packaging>jar</packaging>
 </project>

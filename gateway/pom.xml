@@ -7,7 +7,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.flashsale</groupId>
+        <groupId>com.spring.luispa</groupId>
         <artifactId>flash-sale-platform</artifactId>
         <version>1.0.0</version>
         <relativePath>../pom.xml</relativePath>

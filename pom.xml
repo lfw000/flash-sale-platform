@@ -12,7 +12,7 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.flashsale</groupId>
+    <groupId>com.spring.luispa</groupId>
     <artifactId>flash-sale-platform</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
