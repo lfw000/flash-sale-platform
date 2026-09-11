@@ -1,0 +1,41 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: notification-service
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    listener:
+      simple:
+        acknowledge-mode: auto
+        prefetch: 10
+        retry:
+          enabled: true
+          max-attempts: 3
+          initial-interval: 1000
+          multiplier: 2.0
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus,metrics
+  metrics:
+    tags:
+      application: ${spring.application.name}
+  tracing:
+    sampling:
+      probability: 1.0
+
+app:
+  rabbitmq:
+    queue:
+      name: notification.booking.queue
+    exchange:
+      name: flashsale.exchange
+    routing-key:
+      name: booking.created
