@@ -6,61 +6,52 @@ spring:
     name: gateway
   cloud:
     gateway:
-      # Global CORS configuration
-      globalcors:
-        cors-configurations:
-          '[/**]':
-            allowedOrigins: "*"
-            allowedMethods:
-              - GET
-              - POST
-              - PUT
-              - DELETE
-              - OPTIONS
-            allowedHeaders: "*"
+      server:
+        webflux:
+          # Configuración global de CORS (necesaria para frontend)
+          globalcors:
+            cors-configurations:
+              '[/**]':
+                allowedOrigins: "*"
+                allowedMethods:
+                  - GET
+                  - POST
+                  - PUT
+                  - DELETE
+                  - OPTIONS
+                allowedHeaders: "*"
 
-      # Route definitions
-      routes:
-        # Auth Service routes
-        - id: auth-service
-          uri: http://localhost:8081
-          predicates:
-            - Path=/api/auth/**
-          filters:
-            - StripPrefix=0
+          # Filtros que se aplican a todas las rutas
+          default-filters:
+            - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials, RETAIN_FIRST
 
-        # Booking Service routes
-        - id: booking-service
-          uri: http://localhost:8082
-          predicates:
-            - Path=/api/events/**, /api/bookings/**
-          filters:
-            - StripPrefix=0
+          # Definición de rutas
+          routes:
+            - id: auth_route
+              uri: http://localhost:8081
+              predicates:
+                - Path=/api/auth/**
+              metadata:
+                public: true
 
-      # Default filters
-      default-filters:
-        - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials, RETAIN_FIRST
+            - id: booking_route
+              uri: http://localhost:8082
+              predicates:
+                - Path=/api/bookings/**
+              metadata:
+                public: false
 
-  # Redis for distributed rate limiting
-  data:
-    redis:
-      host: ${REDIS_HOST:localhost}
-      port: ${REDIS_PORT:6379}
+app:
+  jwt:
+    secret: YourSuperSecretKeyForJWTTokenGenerationMustBeAtLeast256BitsLong123456789
 
-# Actuator endpoints
 management:
   endpoints:
     web:
       exposure:
-        include: health,info,prometheus,metrics
-  metrics:
-    tags:
-      application: ${spring.application.name}
-  tracing:
-    sampling:
-      probability: 1.0
+        include: health,info,prometheus
 
-# Logging
 logging:
   level:
     org.springframework.cloud.gateway: DEBUG
+    com.flashsale.gateway: DEBUG
