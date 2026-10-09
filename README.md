@@ -1,6 +1,7 @@
 # Flash Sale Platform
 
-A production-grade, distributed microservices architecture designed to handle high-concurrency ticket booking (flash sales). Built with **Spring Boot 4**, **Java 21**, and modern cloud-native practices.
+Una arquitectura de microservicios distribuidos, diseñada para gestionar la reserva de entradas con alta concurrencia 
+(ventas flash). Desarrollada con Spring Boot 4, Java 21 y prácticas modernas nativas de la nube.
 
 ![Java CI/CD](https://github.com/lfw000/flash-sale-platform/actions/workflows/ci.yml/badge.svg)
 ![Java](https://img.shields.io/badge/Java-21-blue)
